@@ -1,0 +1,8 @@
+#
+# Enable Gzip compression for all CSS and JS files, if the browser accepts them
+#
+<ifModule mod_deflate.c>
+	<filesMatch "\.(js|css)$">
+		SetOutputFilter DEFLATE
+	</filesMatch>
+</ifModule>
