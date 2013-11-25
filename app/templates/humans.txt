@@ -13,7 +13,7 @@
 _______________________________________________________________________________
 
 PEOPLE
-<%= data.humans.username %> - <title> - <%= data.humans.twittername %>
+<%= data.humans.username %> - <%= data.humans.usertitle %> - <%= data.humans.usertwitter %>
 
 _______________________________________________________________________________
 
