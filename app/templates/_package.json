@@ -1,5 +1,13 @@
 {
   "name": "<%= _.slugify(data.appname) %>",
-  "version": "0.0.1",
-  "dependencies": {}
+  "version": "0.1.0",
+  "author": "<%= data.humans.username %>",<% if (data.repo) { %>
+  "repository": {
+    "type": "git",
+    "url": "<%= data.repoUrl %>"
+  },<% } %>
+  "dependencies": {},
+  "devDependencies": {
+    "grunt": ""
+  }
 }

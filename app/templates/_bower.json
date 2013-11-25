@@ -1,8 +1,9 @@
 {
   "name": "<%= _.slugify(data.appname) %>",
   "version": "0.0.1",
-  "dependencies": {
-    <% if (data.bowerComponents) { %><%= data.bowerComponents %><% } %>
+  "dependencies": {<% if (data.jquery) { %>
+    "jquery": ""<% } %><% if (data.modernizr) { %>,
+    "modernizr": ""<% } %>
   }
 }
 

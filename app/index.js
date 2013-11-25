@@ -46,12 +46,18 @@ LaunchpadGenerator.prototype.askFor = function askFor() {
             message: 'Your Twitter username?',
             default: null
         },
-        // Application
+        // Application & workflow
         {
             type: 'input',
             name: 'appname',
-            message: 'What are you calling this thing?',
+            message: 'What are you calling this project?',
             default: 'MyApp'
+        },
+        {
+            type: 'confirm',
+            name: 'robots',
+            message: 'Robots can crawl this project?',
+            default: true
         },
         // Components & libraries
         {
@@ -65,8 +71,22 @@ LaunchpadGenerator.prototype.askFor = function askFor() {
             name: 'modernizr',
             message: 'Include Modernizr?',
             default: false
+        },
+        {
+            type: 'confirm',
+            name: 'repo',
+            message: 'Do you already have a repo for this project?',
+            default: false
+        },
+        {
+            type: 'input',
+            name: 'repoUrl',
+            message: 'What\'s the URL of this repo?',
+            default: null,
+            when: function (answers) {
+                return answers.repo;
+            }
         }
-
     ];
 
     this.prompt(promptsFirst, function (answers) {
@@ -75,12 +95,13 @@ LaunchpadGenerator.prototype.askFor = function askFor() {
 
         // Application
         self.data.appname = answers.appname;
+        self.data.repo = answers.repo;
+        self.data.repoUrl = answers.repoUrl || '';
+        self.data.robots = answers.robots;
 
         // Componenets & Libraries
-        if (answers.jquery) self.data.bowerComponents.push('"jquery": ""');
-        if (answers.modernizr) self.data.bowerComponents.push('"modernizr": ""');
-
-        self.data.bowerComponents = self.data.bowerComponents.join(',');
+        self.data.jquery = answers.jquery;
+        self.data.modernizr = answers.modernizr;
 
         self.data.humans = {};
         self.data.humans.username = answers.username || '<name>';
@@ -97,12 +118,21 @@ LaunchpadGenerator.prototype.app = function app() {
     // this.mkdir('app');
     // this.mkdir('app/templates');
 
+    // Workflow
     this.template('_package.json', 'package.json');
     this.template('_bower.json', 'bower.json');
+
+    this.copy('jshintrc', '.jshintrc');
+
 };
 
 // The rest of the application files and directory structure
 LaunchpadGenerator.prototype.projectfiles = function projectfiles() {
     var data = this.data;
-    this.template('humans.txt');
+
+    this.template('_humans.txt', 'humans.txt');
+    this.template('_robots.txt', 'robots.txt');
+
+    this.copy('htaccess', '.htaccess');
+    this.copy('crossdomain.xml', 'crossdomain.xml');
 };
