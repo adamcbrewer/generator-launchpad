@@ -1,5 +1,5 @@
-## Get Involved
+## Getting Involved
 
-Contributions are more than welcome, so fork away! The basic scaffolding, however, is something I'd prefer to keep in place, unless there are massive holes in my setup :)
+Contributions are more than welcome, so fork away! I'd like not to get _too_ specific and also try not to make it bloated – just automating the essential, time-consuming setup tasks and maybe a couple of optional frameworks to get up-and-running quickly.
 
-_Have a lovely day!_
+Thanks!

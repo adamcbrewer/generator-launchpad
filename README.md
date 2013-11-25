@@ -1,6 +1,8 @@
 # generator-launchpad [![Build Status](https://secure.travis-ci.org/adamcbrewer/generator-launchpad.png?branch=master)](https://travis-ci.org/adamcbrewer/generator-launchpad)
 
-A generator for [Yeoman](http://yeoman.io).
+![Launchpad](http://images2.wikia.nocookie.net/__cb20111103182547/poohadventures/images/3/3b/LaunchpadMcQuack.gif)
+
+An opinionated, [Yeoman inspired](http://yeoman.io), HTML5 starter kit for quick web apps and sites.
 
 
 ## Getting Started
@@ -29,7 +31,7 @@ To install generator-launchpad from npm, run:
 $ npm install -g generator-launchpad
 ```
 
-Finally, initiate the generator:
+Initiate the generator:
 
 ```
 $ yo launchpad
