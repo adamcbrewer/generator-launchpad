@@ -2,8 +2,8 @@
   "name": "<%= _.slugify(data.appname) %>",
   "version": "0.0.1",
   "dependencies": {<% if (data.jquery) { %>
-    "jquery": ""<% } %><% if (data.modernizr) { %>,
-    "modernizr": ""<% } %>
+    "jquery": "~2.0.3"<% } %><% if (data.modernizr) { %>,
+    "modernizr": "~2.7.0"<% } %>
   }
 }
 

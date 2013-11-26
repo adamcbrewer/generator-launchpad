@@ -115,24 +115,35 @@ LaunchpadGenerator.prototype.askFor = function askFor() {
 
 // Application important files here
 LaunchpadGenerator.prototype.app = function app() {
-    // this.mkdir('app');
-    // this.mkdir('app/templates');
+
+    // Directory structure
+    this.mkdir('assets');
+    this.mkdir('assets/css');
+    this.mkdir('assets/js');
+    this.mkdir('assets/img');
 
     // Workflow
     this.template('_package.json', 'package.json');
     this.template('_bower.json', 'bower.json');
-
     this.copy('jshintrc', '.jshintrc');
+    this.copy('editorconfig', '.editorconfig');
+    this.copy('htaccess', '.htaccess');
+    this.copy('gitignore', '.gitignore');
+
+    // Assets
+    this.copy('assets/htaccess', 'assets/.htaccess');
+    this.copy('assets/js/script.js', 'assets/js/script.js');
+    this.copy('assets/img/favicon.ico', 'assets/img/favicon.ico');
 
 };
 
 // The rest of the application files and directory structure
 LaunchpadGenerator.prototype.projectfiles = function projectfiles() {
-    var data = this.data;
 
+    // Meta
     this.template('_humans.txt', 'humans.txt');
     this.template('_robots.txt', 'robots.txt');
-
-    this.copy('htaccess', '.htaccess');
     this.copy('crossdomain.xml', 'crossdomain.xml');
+    this.copy('404.xml', '404.xml');
+
 };
