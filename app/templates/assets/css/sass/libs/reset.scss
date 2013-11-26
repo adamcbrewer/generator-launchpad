@@ -1,0 +1,55 @@
+/*
+ * http://meyerweb.com/eric/thoughts/2007/05/01/reset-reloaded/
+ * Modified with h5bp.com/css
+ */
+html, body, div, span, applet, object, iframe,h1, h2, h3, h4, h5, h6, p, blockquote, pre,a, abbr, acronym, address, big, cite, code,del, dfn, em, font, img, ins, kbd, q, s, samp,small, strike, strong, sub, sup, tt, var,b, u, i, center,dl, dt, dd, ol, ul, li,fieldset, form, label, legend,table, caption, tbody, tfoot, thead, tr, th, td {margin: 0;padding: 0;border: 0;outline: 0;font-size: 100%;vertical-align: baseline;background: transparent;}
+html {font-size: 100%; -webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%;}
+body {}
+ol, ul {list-style: none;}
+blockquote, q {quotes: none;}
+/* remember to define focus styles! */
+:focus {outline: 0;}
+/* remember to highlight inserts somehow! */
+ins {text-decoration: none;}
+del {text-decoration: line-through;}
+/* tables still need 'cellspacing="0"' in the markup */
+table {border-collapse: collapse;border-spacing: 0;}
+td { vertical-align: top; }
+a {text-decoration: none;color:#000;}
+a:hover {text-decoration: underline;}
+a:focus {outline: 0;}
+/* Improve readability of pre-formatted text in all browsers */
+pre { white-space: pre; white-space: pre-wrap; word-wrap: break-word; }
+small { font-size: 85%; }
+/* Position subscript and superscript content without affecting line-height: h5bp.com/k */
+sub, sup { font-size: 75%; line-height: 0; position: relative; vertical-align: baseline; }
+sup { top: -0.5em; }
+sub { bottom: -0.25em; }
+/* Improve image quality when scaled in IE7: h5bp.com/d & Remove the gap between images and borders on image containers: h5bp.com/e */
+img { border: 0; -ms-interpolation-mode: bicubic; vertical-align: middle; }
+label { cursor: pointer; }
+button, input[type="button"], input[type="reset"], input[type="submit"] { cursor: pointer; -webkit-appearance: button; }
+/* Remove inner padding and border in FF3/4: h5bp.com/l */
+button::-moz-focus-inner, input::-moz-focus-inner { border: 0; padding: 0; }
+/* Remove default vertical scrollbar in IE6/7/8/9 & Allow only vertical resizing */
+textarea { overflow: auto; vertical-align: top; resize: vertical; }
+/* HTML5 stuff */
+article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section {display: block;}
+audio, canvas, video { display: inline-block; *display: inline; *zoom: 1; }
+audio:not([controls]) { display: none; }
+[hidden] { display: none; }
+figure { margin: 0px; }
+
+/* Micro-clearfix (http://nicolasgallagher.com/micro-clearfix-hack/) --------------------------------------- */
+/* For modern browsers */
+.cf:before, .cf:after {content:"";display:block;}
+.cf:after {clear:both;}
+/* For IE 6/7 (trigger hasLayout) */
+.cf {zoom:1;}
+
+/* html5bp image replacement */
+.ir { background-color: transparent; border: 0; overflow: hidden;
+    /* IE 6/7 fallback */
+    *text-indent: -9999px;
+}
+.ir:before { content: ""; display: block; width: 0; height: 100%; }

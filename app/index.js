@@ -27,6 +27,87 @@ LaunchpadGenerator.prototype.askFor = function askFor() {
     console.log('Launchpad is an opinionated HTML5 starter kit for quick web apps and sites.');
 
     var promptsFirst = [
+        // Application & workflow
+        /*
+
+        {
+            type: 'input',
+            name: 'appname',
+            message: 'What are you calling this project?',
+            default: 'MyApp'
+        },
+        {
+            type: 'confirm',
+            name: 'robots',
+            message: 'Robots can crawl this project?',
+            default: true
+        },
+        */
+        {
+            type: 'confirm',
+            name: 'yesExtras',
+            message: 'Include third-party libraries?',
+            default: true
+        },
+        // Components & libraries
+        {
+            type: 'checkbox',
+            name: 'extras',
+            message: 'Which extras would you like?',
+            when: function (answers) {
+                return answers.yesExtras;
+            },
+            choices: [
+                {
+                    name: 'jQuery?',
+                    value: 'jquery',
+                    checked: false
+                },
+                {
+                    name: 'Modernizr?',
+                    value: 'modernizr',
+                    checked: false
+                }
+            ]
+        },
+        // CSS
+        {
+            type: 'confirm',
+            name: 'yesSass',
+            message: 'Use SASS?',
+            default: true
+        },
+        {
+            type: 'checkbox',
+            name: 'cssExtras',
+            message: 'What are your CSS preferences?',
+            when: function (answers) {
+                return answers.yesSass;
+            },
+            choices: [
+                {
+                    name: 'reset.css?',
+                    value: 'reset',
+                    checked: false
+                }
+            ]
+        },
+        /*
+        {
+            type: 'confirm',
+            name: 'repo',
+            message: 'Do you already have a repo for this project?',
+            default: false
+        },
+        {
+            type: 'input',
+            name: 'repoUrl',
+            message: 'What\'s the URL of this repo?',
+            default: null,
+            when: function (answers) {
+                return answers.repo;
+            }
+        },
         // User/Developer
         {
             type: 'input',
@@ -45,73 +126,34 @@ LaunchpadGenerator.prototype.askFor = function askFor() {
             name: 'usertwitter',
             message: 'Your Twitter username?',
             default: null
-        },
-        // Application & workflow
-        {
-            type: 'input',
-            name: 'appname',
-            message: 'What are you calling this project?',
-            default: 'MyApp'
-        },
-        {
-            type: 'confirm',
-            name: 'robots',
-            message: 'Robots can crawl this project?',
-            default: true
-        },
-        // Components & libraries
-        {
-            type: 'checkbox',
-            name: 'extras',
-            message: 'Which extras would you like?',
-            choices: [
-                {
-                    name: 'jQuery?',
-                    value: 'jquery',
-                    checked: false
-                },
-                {
-                    name: 'Modernizr?',
-                    value: 'modernizr',
-                    checked: false
-                }
-            ]
-        },
-        {
-            type: 'confirm',
-            name: 'repo',
-            message: 'Do you already have a repo for this project?',
-            default: false
-        },
-        {
-            type: 'input',
-            name: 'repoUrl',
-            message: 'What\'s the URL of this repo?',
-            default: null,
-            when: function (answers) {
-                return answers.repo;
-            }
         }
+        */
     ];
 
     this.prompt(promptsFirst, function (answers) {
 
-        var extras = answers.extras;
-        var hasExtra = function (choice) {
+        var hasExtra = function (extras, choice) {
+            extras = extras || [];
             return extras.indexOf(choice) !== -1;
         }
 
         self.data.bowerComponents = [];
 
         // Application
-        self.data.appname = answers.appname;
+        self.data.appname = answers.appname || 'FILE_NAME';
         self.data.repo = answers.repo;
         self.data.repoUrl = answers.repoUrl || '';
         self.data.robots = answers.robots;
 
-        // Componenets & Libraries
-        self.data.jquery = hasExtra('jquery');
-        self.data.modernizr = hasExtra('modernizr');
+        // JS
+        var extras = answers.extras;
+        self.data.jquery = hasExtra(extras, 'jquery');
+        self.data.modernizr = hasExtra(extras, 'modernizr');
+
+        // CSS
+        var cssExtras = answers.cssExtras || [];
+        self.data.sass = answers.yesSass;
+        self.data.cssReset = hasExtra(cssExtras, 'reset');
 
         self.data.humans = {};
         self.data.humans.username = answers.username || '<name>';
@@ -128,9 +170,13 @@ LaunchpadGenerator.prototype.app = function app() {
 
     // Directory structure
     this.mkdir('assets');
-    this.mkdir('assets/css');
     this.mkdir('assets/js');
     this.mkdir('assets/img');
+    this.mkdir('assets/css');
+    if (this.data.sass) {
+        this.mkdir('assets/css/sass');
+        this.mkdir('assets/css/sass/libs');
+    }
 
     // Workflow
     this.template('_package.json', 'package.json');
@@ -139,11 +185,6 @@ LaunchpadGenerator.prototype.app = function app() {
     this.copy('editorconfig', '.editorconfig');
     this.copy('htaccess', '.htaccess');
     this.copy('gitignore', '.gitignore');
-
-    // Assets
-    this.copy('assets/htaccess', 'assets/.htaccess');
-    this.copy('assets/js/script.js', 'assets/js/script.js');
-    this.copy('assets/img/favicon.ico', 'assets/img/favicon.ico');
 
 };
 
@@ -155,5 +196,26 @@ LaunchpadGenerator.prototype.projectfiles = function projectfiles() {
     this.template('_robots.txt', 'robots.txt');
     this.copy('crossdomain.xml', 'crossdomain.xml');
     this.copy('404.html', '404.html');
+
+    // Assets - General
+    this.copy('assets/htaccess', 'assets/.htaccess');
+
+    // JS
+    this.template('assets/js/_script.js', 'assets/js/script.js');
+
+    // Images
+    this.copy('assets/img/favicon.ico', 'assets/img/favicon.ico');
+
+    // CSS
+    this.template('assets/css/_styles.css', 'assets/css/styles.css');
+    if (this.data.sass) {
+        var baseCss = this.data.cssReset ? 'reset' : 'normalize';
+        this.copy('assets/css/sass/vars.scss', 'assets/css/sass/_vars.scss');
+        this.copy('assets/css/sass/fonts.scss', 'assets/css/sass/_fonts.scss');
+        this.copy('assets/css/sass/styles.scss', 'assets/css/sass/_styles.scss');
+        this.template('assets/css/sass/main.scss', 'assets/css/sass/main.scss');
+        this.copy('assets/css/sass/libs/helpers.scss', 'assets/css/sass/libs/_helpers.scss');
+        this.copy('assets/css/sass/libs/'+baseCss+'.scss', 'assets/css/sass/libs/_'+baseCss+'.scss');
+    }
 
 };

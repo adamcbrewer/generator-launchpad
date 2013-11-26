@@ -1,5 +1,5 @@
 /**
- * Author:
+ * Author: <%= data.humans.username %>
  *
  */
 ;(function(window, document, undefined){
