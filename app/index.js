@@ -61,16 +61,21 @@ LaunchpadGenerator.prototype.askFor = function askFor() {
         },
         // Components & libraries
         {
-            type: 'confirm',
-            name: 'jquery',
-            message: 'Include jQuery?',
-            default: true
-        },
-        {
-            type: 'confirm',
-            name: 'modernizr',
-            message: 'Include Modernizr?',
-            default: false
+            type: 'checkbox',
+            name: 'extras',
+            message: 'Which extras would you like?',
+            choices: [
+                {
+                    name: 'jQuery?',
+                    value: 'jquery',
+                    checked: false
+                },
+                {
+                    name: 'Modernizr?',
+                    value: 'modernizr',
+                    checked: false
+                }
+            ]
         },
         {
             type: 'confirm',
@@ -91,6 +96,11 @@ LaunchpadGenerator.prototype.askFor = function askFor() {
 
     this.prompt(promptsFirst, function (answers) {
 
+        var extras = answers.extras;
+        var hasExtra = function (choice) {
+            return extras.indexOf(choice) !== -1;
+        }
+
         self.data.bowerComponents = [];
 
         // Application
@@ -100,8 +110,8 @@ LaunchpadGenerator.prototype.askFor = function askFor() {
         self.data.robots = answers.robots;
 
         // Componenets & Libraries
-        self.data.jquery = answers.jquery;
-        self.data.modernizr = answers.modernizr;
+        self.data.jquery = hasExtra('jquery');
+        self.data.modernizr = hasExtra('modernizr');
 
         self.data.humans = {};
         self.data.humans.username = answers.username || '<name>';
@@ -144,6 +154,6 @@ LaunchpadGenerator.prototype.projectfiles = function projectfiles() {
     this.template('_humans.txt', 'humans.txt');
     this.template('_robots.txt', 'robots.txt');
     this.copy('crossdomain.xml', 'crossdomain.xml');
-    this.copy('404.xml', '404.xml');
+    this.copy('404.html', '404.html');
 
 };
