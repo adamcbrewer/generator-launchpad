@@ -221,4 +221,7 @@ LaunchpadGenerator.prototype.projectfiles = function projectfiles() {
         this.copy('assets/css/sass/libs/'+baseCss+'.scss', 'assets/css/sass/libs/_'+baseCss+'.scss');
     }
 
+    // The HTML
+    this.template('_index.html', 'index.html');
+
 };
