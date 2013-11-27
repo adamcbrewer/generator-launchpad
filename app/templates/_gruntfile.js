@@ -5,6 +5,14 @@ module.exports = function(grunt) {
 
     grunt.initConfig({
         pkg: grunt.file.readJSON('package.json'),
+        banner: '/*! <%%= pkg.name %> - v<%%= pkg.version %> - ' +
+            '<%%= grunt.template.today("yyyy-mm-dd") %>\n' +
+            '<%%= pkg.homepage ? "* " + pkg.homepage + "\\n" : "" %>' +
+            '* Copyright (c) <%%= grunt.template.today("yyyy") %> <%%= pkg.author.name %>;' +
+            ' Licensed <%%= props.license %> */\n',
+        meta: {
+            version: '0.1.0'
+        },
         notify: {
             watch: {
                 options: {
@@ -15,39 +23,33 @@ module.exports = function(grunt) {
             build: {
                 options: {
                     title: 'Build',
-                    message: 'All the files'
-                }
-            },
-            sass: {
-                options: {
-                    title: 'CSS…',
-                    message: 'Compiled all the things'
+                    message: 'Completed'
                 }
             }
         },
         watch: {
             options: { nospawn: true },
             env: {
-                // environment files and markup pages
+                // Sstatic and environment files
                 files: [
                     "Gruntfile.js",
                     "*.html"
                 ],
                 options: { livereload: true },
-                tasks: []
+                tasks: [
+                    'notify:watch'
+                ]
             },
             js: {
                 files: [
-                    'assets/js/plugins/*.js',
-                    'assets/js/libs/*.js',
-                    'assets/js/*.js'
+                    'assets/js/*.js',
+                    'assets/js/**/*.js'
                 ],
                 options: { livereload: true },
                 tasks: [
-                    'notify:js',
                     'uglify:development'
                 ]
-            },
+            }<% if (data.sass) { %>,
             sass: {
                 files: [
                     'assets/css/sass/*.scss',
@@ -55,15 +57,10 @@ module.exports = function(grunt) {
                 ],
                 options: { livereload: true },
                 tasks: [
-                    'notify:sass',
                     'sass:development'
                 ]
-            }
-        },
-
-        // I need the the css output to originate from the same location.
-        // The difference between the production level is the
-        // level of compression
+            }<% } %>
+        }<% if (data.sass) { %>,
         sass: {
             development: {
                 options: {
@@ -85,15 +82,11 @@ module.exports = function(grunt) {
                     'assets/css/styles.css': 'assets/css/sass/main.scss'
                 }
             }
-        },
+        }<% } %>,
         uglify: {
             development: {
                 options: {
-                    banner: '/*!\n' +
-                        ' * <%= pkg.name %> - <%= pkg.version %> - <%= grunt.template.today("yyyy-mm-dd H:MM:ss") %>\n' +
-                        ' * Development build\n' +
-                        ' * https://github.com/adamcbrewer/launchpad\n *\n' +
-                        ' */\n',
+                    banner: '<%%= banner %>',
                     compress: false,
                     preserveComments: true,
                     mangle: false,
@@ -103,31 +96,29 @@ module.exports = function(grunt) {
                 files: [
                     {
                         src: [
-                            'assets/js/libs/jquery.js',
-                            'assets/js/script.js',
+                            'assets/js/script.js'<% if (data.jquery) { %>,
+                            'assets/js/libs/jquery.js'<% } %>
                         ],
-                        dest: 'assets/js/min/script.min.js'
+                        dest: 'assets/js/main.min.js'
                     }
                 ]
             },
             production: {
                 options: {
-                    banner: '/*!\n' +
-                        ' * <%= pkg.name %> - <%= pkg.version %> - <%= grunt.template.today("yyyy-mm-dd H:MM:ss") %>\n' +
-                        ' * Production build\n' +
-                        ' */\n',
+                    banner: '<%%= banner %>',
                     compress: true,
                     preserveComments: false,
                     mangle: false,
+                    beautify: false,
                     report: 'min'
                 },
                 files: [
                     {
                         src: [
-                            'assets/js/libs/jquery.js',
-                            'assets/js/script.js',
+                            'assets/js/script.js'<% if (data.jquery) { %>,
+                            'assets/js/libs/jquery.js'<% } %>
                         ],
-                        dest: 'assets/js/min/script.min.js'
+                        dest: 'assets/js/main.min.js'
                     }
                 ]
             }
@@ -135,15 +126,14 @@ module.exports = function(grunt) {
     });
 
     grunt.registerTask('default', [
-        'notify',
         'watch'
     ]);
 
     // prep files for production
     grunt.registerTask('build', [
+        <% if (data.sass) { %>'sass:production'<% } %>,
+        'uglify:production',
         'notify:build',
-        'sass:production',
-        'uglify:production'
     ]);
 
 };

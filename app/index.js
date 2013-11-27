@@ -181,6 +181,7 @@ LaunchpadGenerator.prototype.app = function app() {
     // Workflow
     this.template('_package.json', 'package.json');
     this.template('_bower.json', 'bower.json');
+    this.template('_gruntfile.js', 'Gruntfile.js');
     this.copy('jshintrc', '.jshintrc');
     this.copy('editorconfig', '.editorconfig');
     this.copy('htaccess', '.htaccess');
@@ -212,6 +213,8 @@ LaunchpadGenerator.prototype.projectfiles = function projectfiles() {
         var baseCss = this.data.cssReset ? 'reset' : 'normalize';
         this.copy('assets/css/sass/vars.scss', 'assets/css/sass/_vars.scss');
         this.copy('assets/css/sass/fonts.scss', 'assets/css/sass/_fonts.scss');
+        this.copy('assets/css/sass/base.scss', 'assets/css/sass/_base.scss');
+        this.copy('assets/css/sass/print.scss', 'assets/css/sass/_print.scss');
         this.copy('assets/css/sass/styles.scss', 'assets/css/sass/_styles.scss');
         this.template('assets/css/sass/main.scss', 'assets/css/sass/main.scss');
         this.copy('assets/css/sass/libs/helpers.scss', 'assets/css/sass/libs/_helpers.scss');

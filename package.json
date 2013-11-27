@@ -1,9 +1,15 @@
 {
   "name": "generator-launchpad",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "description": "A generator for Yeoman",
   "keywords": [
-    "yeoman-generator"
+    "yeoman-generator",
+    "web",
+    "html5",
+    "boilerplate",
+    "front-end",
+    "h5bp",
+    "app"
   ],
   "homepage": "https://github.com/adamcbrewer/generator-launchpad",
   "bugs": "https://github.com/adamcbrewer/generator-launchpad/issues",
