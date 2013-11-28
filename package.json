@@ -1,7 +1,7 @@
 {
   "name": "generator-launchpad",
   "version": "0.1.0",
-  "description": "A generator for Yeoman",
+  "description": "A lean, HTML webapp/website starter kit. A launchpad!",
   "keywords": [
     "yeoman-generator",
     "web",
@@ -15,7 +15,7 @@
   "bugs": "https://github.com/adamcbrewer/generator-launchpad/issues",
   "author": {
     "name": "Adam Brewer",
-    "email": "",
+    "email": "adamcbrewer@gmail.com",
     "url": "https://github.com/adamcbrewer"
   },
   "main": "app/index.js",
