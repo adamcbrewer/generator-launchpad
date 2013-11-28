@@ -28,8 +28,6 @@ LaunchpadGenerator.prototype.askFor = function askFor() {
 
     var promptsFirst = [
         // Application & workflow
-        /*
-
         {
             type: 'input',
             name: 'appname',
@@ -42,7 +40,6 @@ LaunchpadGenerator.prototype.askFor = function askFor() {
             message: 'Robots can crawl this project?',
             default: true
         },
-        */
         {
             type: 'confirm',
             name: 'yesExtras',
@@ -92,7 +89,6 @@ LaunchpadGenerator.prototype.askFor = function askFor() {
                 }
             ]
         },
-        /*
         {
             type: 'confirm',
             name: 'repo',
@@ -127,7 +123,6 @@ LaunchpadGenerator.prototype.askFor = function askFor() {
             message: 'Your Twitter username?',
             default: null
         }
-        */
     ];
 
     this.prompt(promptsFirst, function (answers) {

@@ -19,20 +19,76 @@ describe('launchpad generator', function () {
         }.bind(this));
     });
 
-    it('creates expected files', function (done) {
+    it('creates important application files', function (done) {
+
         var expected = [
             // add files you expect to exist here.
+            '.editorconfig',
+            '.gitignore',
+            '.htaccess',
             '.jshintrc',
-            '.editorconfig'
+            'bower.json',
+            'Gruntfile.js',
+            'humans.txt',
+            'index.html',
+            'package.json',
+            'robots.txt',
+            'assets/.htaccess',
+            'assets/js/script.js',
+            'assets/css/styles.css',
+            'assets/img/favicon.ico'
         ];
 
         helpers.mockPrompt(this.app, {
-            'someOption': true
+            'appname': 'Mocha Testing',
+            'robots': true,
+
+            'yesSass': false,
+
+            'repo': true,
+            'repoUrl': 'http://test.com',
+
+            'username': 'Your Name',
+            'usertitle': 'Web Developer',
+            'usertwitter': '@youreawesome'
+
         });
+
         this.app.options['skip-install'] = true;
+
         this.app.run({}, function () {
             helpers.assertFiles(expected);
             done();
         });
+
     });
+
+    it('creates sass files', function (done) {
+
+        var expected = [
+            'assets/css/sass/libs/_helpers.scss',
+            'assets/css/sass/libs/_reset.scss',
+            'assets/css/sass/_base.scss',
+            'assets/css/sass/_fonts.scss',
+            'assets/css/sass/_print.scss',
+            'assets/css/sass/_styles.scss',
+            'assets/css/sass/_vars.scss',
+            'assets/css/sass/main.scss'
+        ];
+
+        helpers.mockPrompt(this.app, {
+            'yesSass': true,
+            'cssExtras': ['reset']
+
+        });
+
+        this.app.options['skip-install'] = true;
+
+        this.app.run({}, function () {
+            helpers.assertFiles(expected);
+            done();
+        });
+
+    });
+
 });
