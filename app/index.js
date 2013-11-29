@@ -64,8 +64,22 @@ LaunchpadGenerator.prototype.askFor = function askFor() {
                     name: 'Modernizr?',
                     value: 'modernizr',
                     checked: false
+                },
+                {
+                    name: 'Google analytics.js?',
+                    value: 'analytics',
+                    checked: false
                 }
             ]
+        },
+        {
+            type: 'input',
+            name: 'analyticsId',
+            message: 'Enter your Google analytics ID, if you have it ready',
+            default: 'UA-XXXXXX-X',
+            when: function (answers) {
+                return (answers.extras && answers.extras.indexOf('analytics') !== -1);
+            }
         },
         // CSS
         {
@@ -144,6 +158,8 @@ LaunchpadGenerator.prototype.askFor = function askFor() {
         var extras = answers.extras;
         self.data.jquery = hasExtra(extras, 'jquery');
         self.data.modernizr = hasExtra(extras, 'modernizr');
+        self.data.analytics = hasExtra(extras, 'analytics');
+        self.data.analyticsId = answers.analyticsId || 'UA-XXXXXX-X';
 
         // CSS
         var cssExtras = answers.cssExtras || [];
