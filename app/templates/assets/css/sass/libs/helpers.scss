@@ -22,25 +22,20 @@
 //============================================================
 
 @mixin transform($arguments...) {
-  -webkit-transform: $arguments;
-     -moz-transform: $arguments;
-      -ms-transform: $arguments;
-       -o-transform: $arguments;
+    -webkit-transform: $arguments;
+      -ms-transform: $arguments; // IE9
           transform: $arguments;
 }
 
 @mixin transform-origin($arguments...) {
   -webkit-transform-origin: $arguments;
-     -moz-transform-origin: $arguments;
-      -ms-transform-origin: $arguments;
-       -o-transform-origin: $arguments;
+      -ms-transform-origin: $arguments; // IE9
           transform-origin: $arguments;
 }
 
 @mixin rotate($arguments...) {
   -webkit-transform: rotate($arguments);
       -ms-transform: rotate($arguments); // IE9
-       -o-transform: rotate($arguments); // Pre v16
           transform: rotate($arguments);
 }
 
@@ -59,17 +54,11 @@
 
 @mixin transition($arguments...) {
     -webkit-transition: $arguments;
-     -moz-transition: $arguments;
-      -ms-transition: $arguments;
-       -o-transition: $arguments;
-          transition: $arguments;
+            transition: $arguments;
 }
 
-@mixin animation($arguments...) {
+@mixin animation($arguments) {
   -webkit-animation: $arguments;
-     -moz-animation: $arguments;
-      -ms-animation: $arguments;
-       -o-animation: $arguments;
           animation: $arguments;
 }
 
@@ -79,10 +68,7 @@
 
 @mixin linear-gradient ($from, $to) {
   background-color: $from;
-  background-image: -webkit-gradient(linear, left top, left bottom, from($from), to($to)); /* Chrome, Safari 4+ */
   background-image: -webkit-linear-gradient(top, $from, $to); /* Chrome 10-25, iOS 5+, Safari 5.1+ */
-  background-image:    -moz-linear-gradient(top, $from, $to); /* Firefox 3.6-15 */
-  background-image:      -o-linear-gradient(top, $from, $to); /* Opera 11.10-12.00 */
   background-image:         linear-gradient(to bottom, $from, $to); /* Chrome 26, Firefox 16+, IE 10+, Opera 12.10+ */
 }
 
@@ -94,17 +80,9 @@
   -webkit-box-sizing: $arguments;
      -moz-box-sizing: $arguments;
        -o-box-sizing: $arguments;
+          box-sizing: $arguments;
 }
 
-@mixin box-shadow ($arguments) {
-  -webkit-box-shadow: $arguments;
-      box-shadow: $arguments;
-}
-
-@mixin border-radius ($arguments) {
-  -webkit-border-radius: $arguments;
-          border-radius: $arguments;
-}
 
 //============================================================
 //
@@ -158,24 +136,3 @@ $easeInOutSine   :  cubic-bezier(0.445, 0.050, 0.550, 0.950);
 $easeInBack      :  cubic-bezier(0.600, -0.280, 0.735, 0.045);
 $easeOutBack     :  cubic-bezier(0.175,  0.885, 0.320, 1.275);
 $easeInOutBack   :  cubic-bezier(0.680, -0.550, 0.265, 1.550);
-
-
-
-//============================================================
-// Structure, Flow and Layout
-//============================================================
-
-// CSS columns
-/*
-@mixin content-columns(@width: 50%, @count: 2, @gap: 0px) {
-    -webkit-column-width:   @width;
-       -moz-column-width:   @width;
-            column-width:   @width;
-    -webkit-column-count:   @count;
-       -moz-column-count:   @count;
-            column-count:   @count;
-    -webkit-column-gap:     @gap;
-       -moz-column-gap:     @gap;
-            column-gap:     @gap;
-}
-*/
