@@ -25,6 +25,10 @@ html, body {
 }
 html {
     font-size: 62.5%;
+    // Remove 300ms delay on Windows Mobile.
+    // Ref: http://updates.html5rocks.com/2013/12/300ms-tap-delay-gone-away
+    -ms-touch-action: manipulation;
+    touch-action: manipulation;
 }
 body {
     font-family: $ff;
