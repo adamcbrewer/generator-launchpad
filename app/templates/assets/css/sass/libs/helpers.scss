@@ -133,24 +133,3 @@ $easeInOutSine   :  cubic-bezier(0.445, 0.050, 0.550, 0.950);
 $easeInBack      :  cubic-bezier(0.600, -0.280, 0.735, 0.045);
 $easeOutBack     :  cubic-bezier(0.175,  0.885, 0.320, 1.275);
 $easeInOutBack   :  cubic-bezier(0.680, -0.550, 0.265, 1.550);
-
-
-
-//============================================================
-// Structure, Flow and Layout
-//============================================================
-
-// CSS columns
-/*
-@mixin content-columns(@width: 50%, @count: 2, @gap: 0px) {
--webkit-column-width:   @width;
-   -moz-column-width:   @width;
-        column-width:   @width;
--webkit-column-count:   @count;
-   -moz-column-count:   @count;
-        column-count:   @count;
--webkit-column-gap:     @gap;
-   -moz-column-gap:     @gap;
-        column-gap:     @gap;
-}
-*/

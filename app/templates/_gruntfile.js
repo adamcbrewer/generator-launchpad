@@ -122,6 +122,25 @@ module.exports = function(grunt) {
                     }
                 ]
             }
+        },
+        imagemin: {
+            production: {
+                options: {
+                    optimizationLevel: 4,
+                    progressive: true,
+                    pngquant: true
+                },
+                files: [{
+                    expand: true,
+                    cwd: 'assets/img/',
+                    src: [
+                        '*.{png,jpg,gif}',
+                        '**/*.{png,jpg,gif}',
+                        '!min/*'
+                    ],
+                    dest: 'assets/img/min/'
+                }]
+            }
         }<% if (data.jquery || data.modernizr) { %>,
         copy: {
             init: {
@@ -150,8 +169,9 @@ module.exports = function(grunt) {
 
     // prep files for production
     grunt.registerTask('build', [
-        <% if (data.sass) { %>'sass:production'<% } %>,
-        'uglify:production',
+        <% if (data.sass) { %>'sass:production',
+        <% } %>'uglify:production',
+        'imagemin:production',
         'notify:build',
     ]);
 
