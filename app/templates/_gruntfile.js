@@ -122,9 +122,28 @@ module.exports = function(grunt) {
                     }
                 ]
             }
-        }
+        }<% if (data.jquery || data.modernizr) { %>,
+        copy: {
+            init: {
+                files: [
+                    <% if (data.jquery) { %>{
+                        src: 'bower_components/jquery/jquery.js',
+                        dest: 'assets/js/libs/jquery.js'
+                    },<% } %><% if (data.modernizr) { %>{
+                        src: 'bower_components/modernizr/modernizr.js',
+                        dest: 'assets/js/libs/modernizr.js'
+                    }<% } %>
+                ]
+            }
+        }<% } %>
     });
 
+    // Run this after a fresh generation/installation
+    grunt.registerTask('init', [
+        <% if (data.jquery || data.modernizr) { %>'copy:init',<% } %>
+    ]);
+
+    // For local developing
     grunt.registerTask('default', [
         'watch'
     ]);
