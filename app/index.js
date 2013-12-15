@@ -58,12 +58,12 @@ LaunchpadGenerator.prototype.askFor = function askFor() {
                 {
                     name: 'jQuery?',
                     value: 'jquery',
-                    checked: false
+                    checked: true
                 },
                 {
                     name: 'Modernizr?',
                     value: 'modernizr',
-                    checked: false
+                    checked: true
                 },
                 {
                     name: 'Google analytics.js?',
