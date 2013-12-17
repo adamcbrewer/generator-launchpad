@@ -85,7 +85,7 @@ LaunchpadGenerator.prototype.askFor = function askFor() {
         {
             type: 'confirm',
             name: 'yesSass',
-            message: 'Use SASS?',
+            message: 'Include SASS?',
             default: true
         },
         {
@@ -128,7 +128,7 @@ LaunchpadGenerator.prototype.askFor = function askFor() {
         {
             type: 'input',
             name: 'usertitle',
-            message: 'Your title?',
+            message: 'Your role/title?',
             default: null
         },
         {
