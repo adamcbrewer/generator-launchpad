@@ -66,12 +66,13 @@ describe('launchpad generator', function () {
     it('creates sass files', function (done) {
 
         var expected = [
-            'assets/css/sass/libs/_helpers.scss',
+            'assets/css/sass/libs/_mixins.scss',
+            'assets/css/sass/libs/_functions.scss',
             'assets/css/sass/libs/_reset.scss',
             'assets/css/sass/_base.scss',
             'assets/css/sass/_fonts.scss',
             'assets/css/sass/_print.scss',
-            'assets/css/sass/_styles.scss',
+            'assets/css/sass/_layout.scss',
             'assets/css/sass/_vars.scss',
             'assets/css/sass/main.scss'
         ];

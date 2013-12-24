@@ -1,0 +1,10 @@
+//============================================================
+// Functions
+//============================================================
+
+// Source: https://github.com/devatrox/Sunglass/
+$imgbase: "../img/" !default;
+
+@function img($filename) {
+    @return url(#{$imgbase}#{$filename});
+}

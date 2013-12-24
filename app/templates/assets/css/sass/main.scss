@@ -1,4 +1,5 @@
-@import "libs/helpers";
+@import "libs/mixins";
+@import "libs/functions";
 @import "libs/<% if (data.cssReset) { %>reset<% } else { %>normalize<% } %>";
 @import "fonts";
 @import "vars";
