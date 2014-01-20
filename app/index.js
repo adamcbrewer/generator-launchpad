@@ -182,6 +182,9 @@ LaunchpadGenerator.prototype.app = function app() {
     // Directory structure
     this.mkdir('assets');
     this.mkdir('assets/js');
+    if (this.data.jquery || this.data.modernizr) {
+        this.mkdir('assets/js/libs');
+    }
     this.mkdir('assets/img');
     this.mkdir('assets/css');
     if (this.data.sass) {
