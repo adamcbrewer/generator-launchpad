@@ -39,17 +39,3 @@ audio, canvas, video { display: inline-block; *display: inline; *zoom: 1; }
 audio:not([controls]) { display: none; }
 [hidden] { display: none; }
 figure { margin: 0px; }
-
-/* Micro-clearfix (http://nicolasgallagher.com/micro-clearfix-hack/) --------------------------------------- */
-/* For modern browsers */
-.cf:before, .cf:after {content:"";display:block;}
-.cf:after {clear:both;}
-/* For IE 6/7 (trigger hasLayout) */
-.cf {zoom:1;}
-
-/* html5bp image replacement */
-.ir { background-color: transparent; border: 0; overflow: hidden;
-    /* IE 6/7 fallback */
-    *text-indent: -9999px;
-}
-.ir:before { content: ""; display: block; width: 0; height: 100%; }

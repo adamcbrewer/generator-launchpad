@@ -12,6 +12,35 @@
     transform: translateY(-50%);
 }
 
+// Cleafix
+// @cudos: http://nicolasgallagher.com/micro-clearfix-hack/
+%cf {
+    *zoom: 1; /* IE 6/7 fallback */
+    &:before,
+    &:after {
+        content: " "; /* 1 */
+        display: table; /* 2 */
+    }
+    &:after {
+        line-height: 0;
+        clear: both;
+    }
+}
+
+// Image Replacement
+%ir {
+    background-color: transparent;
+    border: 0;
+    overflow: hidden;
+    *text-indent: -9999px; /* IE 6/7 fallback */
+    &:before {
+        content: "";
+        display: block;
+        width: 0;
+        height: 100%;
+    }
+}
+
 //============================================================
 // Typography
 //============================================================
