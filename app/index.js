@@ -196,6 +196,7 @@ LaunchpadGenerator.prototype.app = function app() {
     this.template('_package.json', 'package.json');
     this.template('_bower.json', 'bower.json');
     this.template('_gruntfile.js', 'Gruntfile.js');
+    this.template('_readme.md', 'README.md');
     this.copy('jshintrc', '.jshintrc');
     this.copy('editorconfig', '.editorconfig');
     this.copy('htaccess', '.htaccess');

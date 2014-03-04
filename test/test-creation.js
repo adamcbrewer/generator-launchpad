@@ -33,6 +33,7 @@ describe('launchpad generator', function () {
             'index.html',
             'package.json',
             'robots.txt',
+            'readme.md',
             'assets/.htaccess',
             'assets/js/script.js',
             'assets/css/styles.css',
