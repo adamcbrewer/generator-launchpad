@@ -210,7 +210,6 @@ LaunchpadGenerator.prototype.projectfiles = function projectfiles() {
     // Meta
     this.template('_humans.txt', 'humans.txt');
     this.template('_robots.txt', 'robots.txt');
-    this.copy('crossdomain.xml', 'crossdomain.xml');
     this.copy('404.html', '404.html');
 
     // Assets - General

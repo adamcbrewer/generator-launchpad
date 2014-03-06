@@ -10,6 +10,7 @@ module.exports = function(grunt) {
 
     grunt.initConfig({
         pkg: grunt.file.readJSON('package.json'),
+        config: config,
         banner: '/*! <%%= pkg.name %> - v<%%= pkg.version %> - ' +
             '<%%= grunt.template.today("yyyy-mm-dd") %>\n' +
             '<%%= pkg.homepage ? "* " + pkg.homepage + "\\n" : "" %>' +
@@ -47,8 +48,8 @@ module.exports = function(grunt) {
             },
             js: {
                 files: [
-                    config.assetsDir + 'js/*.js',
-                    config.assetsDir + 'js/**/*.js'
+                    '<%%= config.assetsDir %>js/*.js',
+                    '<%%= config.assetsDir %>js/**/*.js'
                 ],
                 options: { livereload: true },
                 tasks: [
@@ -57,8 +58,8 @@ module.exports = function(grunt) {
             }<% if (data.sass) { %>,
             sass: {
                 files: [
-                    config.assetsDir + 'css/sass/*.scss',
-                    config.assetsDir + 'css/sass/libs/*.scss'
+                    '<%%= config.assetsDir %>css/sass/*.scss',
+                    '<%%= config.assetsDir %>css/sass/libs/*.scss'
                 ],
                 options: { livereload: true },
                 tasks: [
@@ -74,7 +75,7 @@ module.exports = function(grunt) {
                     noCache: true
                 },
                 files: {
-                    config.assetsDir + 'css/' + config.cssFilenameOutput: config.assetsDir + 'css/sass/main.scss'
+                    '<%%= config.assetsDir %>css/<%%= config.cssFilenameOutput %>': '<%%= config.assetsDir %>css/sass/main.scss'
                 }
             },
             production: {
@@ -84,14 +85,13 @@ module.exports = function(grunt) {
                     noCache: true
                 },
                 files: {
-                    config.assetsDir + 'css/' + config.cssFilenameOutput: config.assetsDir + 'css/sass/main.scss'
+                    '<%%= config.assetsDir %>css/<%%= config.cssFilenameOutput %>': '<%%= config.assetsDir %>css/sass/main.scss'
                 }
             }
         }<% } %>,
         uglify: {
             development: {
                 options: {
-                    banner: '<%%= banner %>',
                     compress: false,
                     preserveComments: true,
                     mangle: false,
@@ -101,16 +101,15 @@ module.exports = function(grunt) {
                 files: [
                     {
                         src: [
-                            config.assetsDir + 'js/script.js'<% if (data.jquery) { %>,
-                            config.assetsDir + 'js/libs/jquery.js'<% } %>
+                            '<%%= config.assetsDir %>js/script.js'<% if (data.jquery) { %>,
+                            '<%%= config.assetsDir %>js/libs/jquery.js'<% } %>
                         ],
-                        dest: config.assetsDir + 'js/' + config.jsFilenameOutput
+                        dest: '<%%= config.assetsDir %>js/<%%= config.jsFilenameOutput %>'
                     }
                 ]
             },
             production: {
                 options: {
-                    banner: '<%%= banner %>',
                     compress: true,
                     preserveComments: false,
                     mangle: false,
@@ -120,10 +119,10 @@ module.exports = function(grunt) {
                 files: [
                     {
                         src: [
-                            config.assetsDir + 'js/script.js'<% if (data.jquery) { %>,
-                            config.assetsDir + 'js/libs/jquery.js'<% } %>
+                            '<%%= config.assetsDir %>js/script.js'<% if (data.jquery) { %>,
+                            '<%%= config.assetsDir %>js/libs/jquery.js'<% } %>
                         ],
-                        dest: config.assetsDir + 'js/' + config.jsFilenameOutput
+                        dest: '<%%= config.assetsDir %>js/<%%= config.jsFilenameOutput %>'
                     }
                 ]
             }
@@ -137,13 +136,13 @@ module.exports = function(grunt) {
                 },
                 files: [{
                     expand: true,
-                    cwd: config.assetsDir + 'img/',
+                    cwd: '<%%= config.assetsDir %>img/',
                     src: [
                         '*.{png,jpg,gif}',
                         '**/*.{png,jpg,gif}',
                         '!min/*'
                     ],
-                    dest: config.assetsDir + 'img/min/'
+                    dest: '<%%= config.assetsDir %>img/min/'
                 }]
             }
         }<% if (data.jquery || data.modernizr) { %>,
@@ -152,10 +151,10 @@ module.exports = function(grunt) {
                 files: [
                     <% if (data.jquery) { %>{
                         src: 'bower_components/jquery/jquery.js',
-                        dest: config.assetsDir + 'js/libs/jquery.js'
+                        dest: '<%%= config.assetsDir %>js/libs/jquery.js'
                     },<% } %><% if (data.modernizr) { %>{
                         src: 'bower_components/modernizr/modernizr.js',
-                        dest: config.assetsDir + 'js/libs/modernizr.js'
+                        dest: '<%%= config.assetsDir %>js/libs/modernizr.js'
                     }<% } %>
                 ]
             }
