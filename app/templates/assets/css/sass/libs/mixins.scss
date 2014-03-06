@@ -2,16 +2,6 @@
 // Placeholders
 //============================================================
 
-// Vertical Centering
-// @cudos http://zerosixthree.se/vertical-align-anything-with-just-3-lines-of-css/
-%vertical-align {
-    position: relative;
-    top: 50%;
-    -webkit-transform: translateY(-50%);
-    -ms-transform: translateY(-50%);
-    transform: translateY(-50%);
-}
-
 // Cleafix
 // @cudos: http://nicolasgallagher.com/micro-clearfix-hack/
 %cf {
@@ -38,6 +28,43 @@
         display: block;
         width: 0;
         height: 100%;
+    }
+}
+
+// Vertical Centering
+// @cudos http://zerosixthree.se/vertical-align-anything-with-just-3-lines-of-css/
+%vertical-align {
+    position: relative;
+    top: 50%;
+    @include transform(translateY(-50%));
+}
+
+// Responsive images
+// <figure class="ri"><img src="" alt=""></figure>
+%ri {
+    > img { max-width: 100%; }
+}
+
+// Scaling <img> elements in a responsive container. Similar vein to background-size: cover;
+// @cudos: http://appendto.com/2014/03/responsive-approach-image-scaling-css/
+%img-scale {
+    // set width & height
+    overflow: hidden;
+
+    > img {
+        position: relative;
+        max-height: 100%;
+        left: 50%;
+        @include translateX(-50%);
+
+        // 800px has to be the width of the source of the image
+        @media (min-width: 800px) {
+            width: 100%; // otherwise we get 'gaps' either side of the image
+            top: 50%;
+            left: 0;
+            max-height: none;
+            @include translateY(-50%);
+        }
     }
 }
 

@@ -1,6 +1,4 @@
-.ir {
-    @extend %ir;
-}
-.cf {
-    @extend %cf;
-}
+.ir { @extend %ir; }
+.ri { @extend %ri; }
+.cf { @extend %cf; }
+.vertical-align { @extend %vertical-align; }
