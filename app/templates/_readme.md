@@ -14,3 +14,13 @@ Optionally, install the [Chrome LiveReload plugin](https://chrome.google.com/web
 All `production` configured tasks are run in succession, such as SASS compilation (if opted in when running the generator), Javascript minification & image optimization. Note: optimised image paths will have to be updated in your HTML/CSS.
 
 All files should be ready for deployment after running this task.
+
+<% if (data.sass) { %>### `$ grunt css`
+Compile all SASS files under the `development` flag option.<% } %>
+
+### `$ grunt img`
+Processes and optimises all images only.
+
+### `$ grunt js`
+Uglifies JS files only under the `development` flag option.
+

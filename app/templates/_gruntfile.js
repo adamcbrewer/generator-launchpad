@@ -170,6 +170,21 @@ module.exports = function(grunt) {
         'watch'
     ]);
 
+    // only process javascript files
+    grunt.registerTask('js', [
+        'uglify:development'
+    ]);
+
+    // only process images
+    grunt.registerTask('img', [
+        'imagemin:production'
+    ]);
+
+    <% if (data.sass) { %>// only process css files
+    grunt.registerTask('css', [
+        'sass:development'
+    ]);<% } %>
+
     // prep files for production
     grunt.registerTask('build', [
         <% if (data.sass) { %>'sass:production',
