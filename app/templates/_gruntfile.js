@@ -5,6 +5,8 @@ module.exports = function(grunt) {
 
     var config = {};
     config.assetsDir = 'assets/';
+    config.cssFilenameOutput = 'styles.css';
+    config.jsFilenameOutput = 'main.min.js';
 
     grunt.initConfig({
         pkg: grunt.file.readJSON('package.json'),
@@ -72,7 +74,7 @@ module.exports = function(grunt) {
                     noCache: true
                 },
                 files: {
-                    config.assetsDir + 'css/styles.css': config.assetsDir + 'css/sass/main.scss'
+                    config.assetsDir + 'css/' + config.cssFilenameOutput: config.assetsDir + 'css/sass/main.scss'
                 }
             },
             production: {
@@ -82,7 +84,7 @@ module.exports = function(grunt) {
                     noCache: true
                 },
                 files: {
-                    config.assetsDir + 'css/styles.css': config.assetsDir + 'css/sass/main.scss'
+                    config.assetsDir + 'css/' + config.cssFilenameOutput: config.assetsDir + 'css/sass/main.scss'
                 }
             }
         }<% } %>,
@@ -102,7 +104,7 @@ module.exports = function(grunt) {
                             config.assetsDir + 'js/script.js'<% if (data.jquery) { %>,
                             config.assetsDir + 'js/libs/jquery.js'<% } %>
                         ],
-                        dest: config.assetsDir + 'js/main.min.js'
+                        dest: config.assetsDir + 'js/' + config.jsFilenameOutput
                     }
                 ]
             },
@@ -121,7 +123,7 @@ module.exports = function(grunt) {
                             config.assetsDir + 'js/script.js'<% if (data.jquery) { %>,
                             config.assetsDir + 'js/libs/jquery.js'<% } %>
                         ],
-                        dest: config.assetsDir + 'js/main.min.js'
+                        dest: config.assetsDir + 'js/' + config.jsFilenameOutput
                     }
                 ]
             }
