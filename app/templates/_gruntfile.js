@@ -3,6 +3,9 @@ module.exports = function(grunt) {
     // Load the all the plugins that Grunt requires
     require('matchdep').filterDev('grunt-*').forEach(grunt.loadNpmTasks);
 
+    var config = {};
+    config.assetsDir = 'assets/';
+
     grunt.initConfig({
         pkg: grunt.file.readJSON('package.json'),
         banner: '/*! <%%= pkg.name %> - v<%%= pkg.version %> - ' +
@@ -42,8 +45,8 @@ module.exports = function(grunt) {
             },
             js: {
                 files: [
-                    'assets/js/*.js',
-                    'assets/js/**/*.js'
+                    config.assetsDir + 'js/*.js',
+                    config.assetsDir + 'js/**/*.js'
                 ],
                 options: { livereload: true },
                 tasks: [
@@ -52,8 +55,8 @@ module.exports = function(grunt) {
             }<% if (data.sass) { %>,
             sass: {
                 files: [
-                    'assets/css/sass/*.scss',
-                    'assets/css/sass/libs/*.scss'
+                    config.assetsDir + 'css/sass/*.scss',
+                    config.assetsDir + 'css/sass/libs/*.scss'
                 ],
                 options: { livereload: true },
                 tasks: [
@@ -69,7 +72,7 @@ module.exports = function(grunt) {
                     noCache: true
                 },
                 files: {
-                    'assets/css/styles.css': 'assets/css/sass/main.scss'
+                    config.assetsDir + 'css/styles.css': config.assetsDir + 'css/sass/main.scss'
                 }
             },
             production: {
@@ -79,7 +82,7 @@ module.exports = function(grunt) {
                     noCache: true
                 },
                 files: {
-                    'assets/css/styles.css': 'assets/css/sass/main.scss'
+                    config.assetsDir + 'css/styles.css': config.assetsDir + 'css/sass/main.scss'
                 }
             }
         }<% } %>,
@@ -96,10 +99,10 @@ module.exports = function(grunt) {
                 files: [
                     {
                         src: [
-                            'assets/js/script.js'<% if (data.jquery) { %>,
-                            'assets/js/libs/jquery.js'<% } %>
+                            config.assetsDir + 'js/script.js'<% if (data.jquery) { %>,
+                            config.assetsDir + 'js/libs/jquery.js'<% } %>
                         ],
-                        dest: 'assets/js/main.min.js'
+                        dest: config.assetsDir + 'js/main.min.js'
                     }
                 ]
             },
@@ -115,10 +118,10 @@ module.exports = function(grunt) {
                 files: [
                     {
                         src: [
-                            'assets/js/script.js'<% if (data.jquery) { %>,
-                            'assets/js/libs/jquery.js'<% } %>
+                            config.assetsDir + 'js/script.js'<% if (data.jquery) { %>,
+                            config.assetsDir + 'js/libs/jquery.js'<% } %>
                         ],
-                        dest: 'assets/js/main.min.js'
+                        dest: config.assetsDir + 'js/main.min.js'
                     }
                 ]
             }
@@ -132,13 +135,13 @@ module.exports = function(grunt) {
                 },
                 files: [{
                     expand: true,
-                    cwd: 'assets/img/',
+                    cwd: config.assetsDir + 'img/',
                     src: [
                         '*.{png,jpg,gif}',
                         '**/*.{png,jpg,gif}',
                         '!min/*'
                     ],
-                    dest: 'assets/img/min/'
+                    dest: config.assetsDir + 'img/min/'
                 }]
             }
         }<% if (data.jquery || data.modernizr) { %>,
@@ -147,10 +150,10 @@ module.exports = function(grunt) {
                 files: [
                     <% if (data.jquery) { %>{
                         src: 'bower_components/jquery/jquery.js',
-                        dest: 'assets/js/libs/jquery.js'
+                        dest: config.assetsDir + 'js/libs/jquery.js'
                     },<% } %><% if (data.modernizr) { %>{
                         src: 'bower_components/modernizr/modernizr.js',
-                        dest: 'assets/js/libs/modernizr.js'
+                        dest: config.assetsDir + 'js/libs/modernizr.js'
                     }<% } %>
                 ]
             }
