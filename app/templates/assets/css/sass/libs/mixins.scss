@@ -167,12 +167,17 @@ $easeInOutBack   :  cubic-bezier(0.680, -0.550, 0.265, 1.550);
     }
 }
 
-// Vertical Centering
-// @cudos http://zerosixthree.se/vertical-align-anything-with-just-3-lines-of-css/
+// Vertical Centering - requires flexbox support
 %vertical-align {
-    position: relative;
-    top: 50%;
-    @include transform(translateY(-50%));
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+
+    -webkit-align-items: center;
+    -moz-align-items: center;
+    -ms-align-items: center;
+    align-items: center;
+    flex-align: center;
 }
 
 // Responsive images
