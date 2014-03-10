@@ -228,7 +228,7 @@ LaunchpadGenerator.prototype.projectfiles = function projectfiles() {
         this.copy('assets/css/sass/vars.scss', 'assets/css/sass/_vars.scss');
         this.copy('assets/css/sass/fonts.scss', 'assets/css/sass/_fonts.scss');
         this.copy('assets/css/sass/base.scss', 'assets/css/sass/_base.scss');
-        this.copy('assets/css/sass/print.scss', 'assets/css/sass/_print.scss');
+        this.copy('assets/css/sass/media.scss', 'assets/css/sass/_media.scss');
         this.copy('assets/css/sass/layout.scss', 'assets/css/sass/_layout.scss');
         this.copy('assets/css/sass/modules.scss', 'assets/css/sass/_modules.scss');
         this.template('assets/css/sass/main.scss', 'assets/css/sass/main.scss');

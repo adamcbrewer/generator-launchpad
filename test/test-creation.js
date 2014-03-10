@@ -72,7 +72,7 @@ describe('launchpad generator', function () {
             'assets/css/sass/libs/_reset.scss',
             'assets/css/sass/_base.scss',
             'assets/css/sass/_fonts.scss',
-            'assets/css/sass/_print.scss',
+            'assets/css/sass/_media.scss',
             'assets/css/sass/_layout.scss',
             'assets/css/sass/_modules.scss',
             'assets/css/sass/_vars.scss',

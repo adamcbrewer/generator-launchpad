@@ -1,8 +1,25 @@
-/* ==|== print styles =======================================================
-    Print styles.
-    Inlined to avoid required HTTP connection: h5bp.com/r
-========================================================================== */
+/**
+ * General Queries
+ *
+ */
 
+
+/**
+ * For retina devices, set the background images here
+ *
+ */
+@media (-webkit-min-device-pixel-ratio: 2),
+        (min--moz-min-device-pixel-ratio: 2),
+        (min-device-pixel-ratio: 2),
+        (min-resolution: 192dpi) {
+
+}
+
+
+/**
+ * Print styles - h5bp.com/r
+ *
+ */
 @media print {
     * { background: transparent !important; color: black !important; text-shadow: none !important; filter:none !important; -ms-filter: none !important; } /* Black prints faster: h5bp.com/s */
     a, a:visited { text-decoration: underline; }
