@@ -155,16 +155,10 @@ $easeInOutBack   :  cubic-bezier(0.680, -0.550, 0.265, 1.550);
 
 // Image Replacement
 %ir {
-    background-color: transparent;
     border: 0;
-    overflow: hidden;
-    *text-indent: -9999px; /* IE 6/7 fallback */
-    &:before {
-        content: "";
-        display: block;
-        width: 0;
-        height: 100%;
-    }
+    font: 0/0 a;
+    text-shadow: none;
+    color: transparent;
 }
 
 // Vertical Centering - requires flexbox support
