@@ -1,6 +1,6 @@
 {
   "name": "generator-launchpad",
-  "version": "0.2.5",
+  "version": "0.2.6",
   "description": "A quick project prototyping tool. Included are options for custom CSS/SASS setups, Modernizr, jQuery, Google analytics, etc., using a workflow based on Grunt and Bower, not to mention Yeoman.",
   "keywords": [
     "yeoman-generator",
