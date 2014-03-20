@@ -189,7 +189,7 @@ LaunchpadGenerator.prototype.app = function app() {
     this.mkdir('assets/css');
     if (this.data.sass) {
         this.mkdir('assets/css/sass');
-        this.mkdir('assets/css/sass/libs');
+        this.mkdir('assets/css/sass/helpers');
     }
 
     // Workflow
@@ -232,9 +232,10 @@ LaunchpadGenerator.prototype.projectfiles = function projectfiles() {
         this.copy('assets/css/sass/layout.scss', 'assets/css/sass/_layout.scss');
         this.copy('assets/css/sass/modules.scss', 'assets/css/sass/_modules.scss');
         this.template('assets/css/sass/main.scss', 'assets/css/sass/main.scss');
-        this.copy('assets/css/sass/libs/mixins.scss', 'assets/css/sass/libs/_mixins.scss');
-        this.copy('assets/css/sass/libs/functions.scss', 'assets/css/sass/libs/_functions.scss');
-        this.copy('assets/css/sass/libs/'+baseCss+'.scss', 'assets/css/sass/libs/_'+baseCss+'.scss');
+        this.copy('assets/css/sass/helpers/placeholders.scss', 'assets/css/sass/helpers/_placeholders.scss');
+        this.copy('assets/css/sass/helpers/mixins.scss', 'assets/css/sass/helpers/_mixins.scss');
+        this.copy('assets/css/sass/helpers/functions.scss', 'assets/css/sass/helpers/_functions.scss');
+        this.copy('assets/css/sass/helpers/'+baseCss+'.scss', 'assets/css/sass/helpers/_'+baseCss+'.scss');
     }
 
     // The HTML

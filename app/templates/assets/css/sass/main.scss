@@ -1,6 +1,12 @@
-@import "libs/mixins";
-@import "libs/functions";
-@import "libs/<% if (data.cssReset) { %>reset<% } else { %>normalize<% } %>";
+/**
+ * Imports
+ *
+ * ================
+ */
+@import "helpers/mixins";
+@import "helpers/placeholders";
+@import "helpers/functions";
+@import "helpers/<% if (data.cssReset) { %>reset<% } else { %>normalize<% } %>";
 @import "fonts";
 @import "vars";
 @import "base";

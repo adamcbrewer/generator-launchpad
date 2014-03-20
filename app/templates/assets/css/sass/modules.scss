@@ -1,4 +1,18 @@
-.ir { @extend %ir; }
-.ri { @extend %ri; }
-.cf { @extend %cf; }
-.vertical-align { @extend %vertical-align; }
+/**
+ * Modules
+ *
+ * Reusable: all.
+ * Naming should not indicated the content it's
+ * representing/styling.
+ *
+ * ================
+ */
+
+
+/**
+ * Utilities
+ *
+ */
+.u-ir { @extend %ir; } // image-replacement
+.u-ri { @extend %ri; } // responsive image
+.u-cf { @extend %cf; } // clearfix

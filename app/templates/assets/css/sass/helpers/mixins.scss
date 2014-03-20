@@ -1,0 +1,122 @@
+/**
+ * Mixins
+ *
+ * ================
+ */
+
+
+/**
+ * Typography
+ *
+ */
+// An rem font-size mixin providing fallback to px
+@mixin font-size($sizeValue: 1.4) {
+    $remValue: $sizeValue;
+    $pxValue: ($sizeValue * 10);
+    font-size: #{$pxValue}px;
+    font-size: #{$remValue}rem;
+}
+
+// Requires inline-block or block for proper styling
+@mixin text-truncate {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+
+/**
+ * Transforms
+ *
+ */
+@mixin transform($arguments...) {
+    -webkit-transform: $arguments;
+        -ms-transform: $arguments; // IE9
+            transform: $arguments;
+}
+
+@mixin transform-origin($arguments...) {
+    -webkit-transform-origin: $arguments;
+        -ms-transform-origin: $arguments; // IE9
+            transform-origin: $arguments;
+}
+
+@mixin rotate($arguments...) {
+    -webkit-transform: rotate($arguments);
+        -ms-transform: rotate($arguments); // IE9
+            transform: rotate($arguments);
+}
+
+@mixin backface-visibility ($arguments) {
+    -webkit-backface-visibility: $arguments;
+       -moz-backface-visibility: $arguments;
+        -ms-backface-visibility: $arguments;
+         -o-backface-visibility: $arguments;
+            backface-visibility: $arguments;
+}
+
+
+/**
+ * Animations
+ *
+ */
+@mixin transition($arguments...) {
+    -webkit-transition: $arguments;
+            transition: $arguments;
+}
+
+@mixin animation($arguments...) {
+    -webkit-animation: $arguments;
+            animation: $arguments;
+}
+
+
+/**
+ * Gradients
+ *
+ */
+@mixin linear-gradient ($from, $to) {
+    background-color: $from;
+    background-image: -webkit-linear-gradient(top, $from, $to); /* Chrome 10-25, iOS 5+, Safari 5.1+ */
+    background-image:         linear-gradient(to bottom, $from, $to); /* Chrome 26, Firefox 16+, IE 10+, Opera 12.10+ */
+}
+
+
+/**
+ * Structure
+ *
+ */
+@mixin box-sizing ($arguments) {
+    -moz-box-sizing: $arguments;
+         box-sizing: $arguments;
+}
+
+
+/**
+ * Layout
+ *
+ */
+// Flexbox
+@mixin display-flex {
+    display: -webkit-flex;
+    display:    -moz-flex; // FF mobile
+    display:     -ms-flexbox; // 2011 (IE 10)
+    display:         flex;
+}
+
+// Vertical Alignment
+@mixin valign-center {
+    -webkit-align-items: center;
+       -moz-align-items: center;
+        -ms-align-items: center;
+            align-items: center;
+       flex-align: center;
+}
+
+@mixin valign-bottom {
+    -webkit-align-items: flex-end;
+       -moz-align-items: flex-end;
+        -ms-align-items: flex-end;
+            align-items: flex-end;
+       flex-align: flex-end;
+}

@@ -1,0 +1,58 @@
+/**
+ * Placeholders
+ *
+ * ================
+ */
+
+
+// Cleafix
+// @cudos: http://nicolasgallagher.com/micro-clearfix-hack/
+%cf {
+    *zoom: 1; /* IE 6/7 fallback */
+    &:before,
+    &:after {
+        content: " "; /* 1 */
+        display: table; /* 2 */
+    }
+    &:after {
+        line-height: 0;
+        clear: both;
+    }
+}
+
+// Image Replacement - HTML5BP
+%ir {
+    border: 0;
+    font: 0/0 a;
+    text-shadow: none;
+    color: transparent;
+}
+
+// Responsive images
+// <figure class="ri"><img src="" alt=""></figure>
+%ri {
+    > img { max-width: 100%; }
+}
+
+// Scaling <img> elements in a responsive container. Similar vein to background-size: cover;
+// @cudos: http://appendto.com/2014/03/responsive-approach-image-scaling-css/
+%img-scale {
+    // set width & height
+    overflow: hidden;
+
+    > img {
+        position: relative;
+        max-height: 100%;
+        left: 50%;
+        @include transform(translateX(-50%));
+
+        // 800px has to be the width of the source of the image
+        @media (min-width: 800px) {
+            width: 100%; // otherwise we get 'gaps' either side of the image
+            top: 50%;
+            left: 0;
+            max-height: none;
+            @include transform(translateY(-50%));
+        }
+    }
+}

@@ -1,17 +1,11 @@
-/* ====================================================
-    BASE STYLES
-
-    Base rules are the defaults. They are almost exclusively
-    single element selectors but it could include attribute selectors,
-    pseudo-class selectors, child selectors or sibling selectors.
-    Essentially, a base style says that wherever this element is on the page,
-    it should look like...
-==================================================== */
+/**
+ * Base style modifications
+ *
+ * ================
+ */
 
 * {
-    -moz-box-sizing: border-box;
-    -webkit-box-sizing: border-box;
-    box-sizing: border-box;
+    @include box-sizing(border-box);
 }
 
 ::-moz-selection {}
