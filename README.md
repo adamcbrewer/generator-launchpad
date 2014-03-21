@@ -16,7 +16,6 @@ An opinionated, [Yeoman inspired](http://yeoman.io), HTML5 starter kit for quick
     + _reset.css or normalize.css (default)?_
         + _reset instead of normalize?_
 + _Your Name?_
-+ _Your role/title?_
 + _Your Twitter username?_
 
 
@@ -32,7 +31,7 @@ Now, whenever you start a new project just initiate the generator:
 $ cd ~/project/dir
 $ yo launchpad
 ```
-Be sure you have the latest version of `generator-launchpad`:
+Lastly, be sure you have the latest version of `generator-launchpad`:
 ```
 $ npm update -g generator-launchpad
 ```
