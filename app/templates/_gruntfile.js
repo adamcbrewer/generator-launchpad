@@ -133,6 +133,9 @@ module.exports = function(grunt) {
                 ]
             }
         },
+        stylestats: {
+            src: ['<%%= config.assetsDir %>css/<%%= config.cssFilenameOutput %>']
+        },
         imagemin: {
             production: {
                 options: {
@@ -192,11 +195,16 @@ module.exports = function(grunt) {
         'sass:development'
     ]);<% } %>
 
+    grunt.registerTask('stats', [
+        'stylestats'
+    ]);
+
     // prep files for production
     grunt.registerTask('build', [
         <% if (data.sass) { %>'sass:production',
         <% } %>'uglify:production',
         'imagemin:production',
+        'stats',
         'notify:build',
     ]);
 

@@ -15,6 +15,7 @@
     "grunt-contrib-copy": "~0.4.1"<% } %>,
     "grunt-contrib-imagemin": "~0.4.0",
     "grunt-notify": "~0.2.16",
+    "grunt-stylestats": "~0.1.2",
     "matchdep": "~0.3.0"
   }
 }
