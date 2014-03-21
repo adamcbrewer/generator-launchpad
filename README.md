@@ -6,18 +6,15 @@ An opinionated, [Yeoman inspired](http://yeoman.io), HTML5 starter kit for quick
 
 ## Runtime Options
 
-+ _What are you calling this project?_
-+ _Robots can crawl this project?_
++ _The name of this project?_
 + _Include third-party libraries?_
     + _Which extras would you like?_
         + _jQuery_
         + _Modernizr_
         + _Google Analytics_
 + _Include SASS?_
-    + _What are your CSS preferences?_
-        + _reset.css (normalize.css by default)_
-+ _Do you already have a repo for this project?_
-    + _What's the URL of this repo?_
+    + _reset.css or normalize.css (default)?_
+        + _reset instead of normalize?_
 + _Your Name?_
 + _Your role/title?_
 + _Your Twitter username?_

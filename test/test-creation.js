@@ -45,9 +45,6 @@ describe('launchpad generator', function () {
 
             'yesSass': false,
 
-            'repo': true,
-            'repoUrl': 'http://test.com',
-
             'username': 'Your Name',
             'usertitle': 'Web Developer',
             'usertwitter': '@youreawesome'

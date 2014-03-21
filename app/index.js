@@ -31,7 +31,7 @@ LaunchpadGenerator.prototype.askFor = function askFor() {
         {
             type: 'input',
             name: 'appname',
-            message: 'What are you calling this project?',
+            message: 'The name of this project?',
             default: 'MyApp'
         },
         {
@@ -39,6 +39,28 @@ LaunchpadGenerator.prototype.askFor = function askFor() {
             name: 'yesExtras',
             message: 'Include third-party libraries?',
             default: true
+        },
+        // CSS
+        {
+            type: 'confirm',
+            name: 'yesSass',
+            message: 'Include SASS?',
+            default: true
+        },
+        {
+            type: 'checkbox',
+            name: 'cssExtras',
+            message: 'reset.css or normalize.css (default)?',
+            when: function (answers) {
+                return answers.yesSass;
+            },
+            choices: [
+                {
+                    name: 'reset instead of normalize?',
+                    value: 'reset',
+                    checked: false
+                }
+            ]
         },
         // Components & libraries
         {
@@ -75,54 +97,11 @@ LaunchpadGenerator.prototype.askFor = function askFor() {
                 return (answers.extras && answers.extras.indexOf('analytics') !== -1);
             }
         },
-        // CSS
-        {
-            type: 'confirm',
-            name: 'yesSass',
-            message: 'Include SASS?',
-            default: true
-        },
-        {
-            type: 'checkbox',
-            name: 'cssExtras',
-            message: 'What are your CSS preferences?',
-            when: function (answers) {
-                return answers.yesSass;
-            },
-            choices: [
-                {
-                    name: 'reset.css?',
-                    value: 'reset',
-                    checked: false
-                }
-            ]
-        },
-        {
-            type: 'confirm',
-            name: 'repo',
-            message: 'Do you already have a repo for this project?',
-            default: false
-        },
-        {
-            type: 'input',
-            name: 'repoUrl',
-            message: 'What\'s the URL of this repo?',
-            default: null,
-            when: function (answers) {
-                return answers.repo;
-            }
-        },
         // User/Developer
         {
             type: 'input',
             name: 'username',
             message: 'Your name?',
-            default: null
-        },
-        {
-            type: 'input',
-            name: 'usertitle',
-            message: 'Your role/title?',
             default: null
         },
         {
@@ -144,9 +123,6 @@ LaunchpadGenerator.prototype.askFor = function askFor() {
 
         // Application
         self.data.appname = answers.appname || 'FILE_NAME';
-        self.data.repo = answers.repo;
-        self.data.repoUrl = answers.repoUrl || '';
-        self.data.robots = answers.robots;
 
         // JS
         var extras = answers.extras;
@@ -162,7 +138,6 @@ LaunchpadGenerator.prototype.askFor = function askFor() {
 
         self.data.humans = {};
         self.data.humans.username = answers.username || '<name>';
-        self.data.humans.usertitle = answers.usertitle || '<title>';
         self.data.humans.usertwitter = answers.usertwitter || '<twitter>';
 
         cb();
