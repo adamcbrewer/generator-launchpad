@@ -42,7 +42,6 @@ describe('launchpad generator', function () {
 
         helpers.mockPrompt(this.app, {
             'appname': 'Mocha Testing',
-            'robots': true,
 
             'yesSass': false,
 
@@ -89,24 +88,6 @@ describe('launchpad generator', function () {
 
         this.app.run({}, function () {
             helpers.assertFiles(expected);
-            done();
-        });
-
-    });
-
-    it('creates extras', function (done) {
-
-        helpers.mockPrompt(this.app, {
-            'appname': 'Mocha Testing',
-            'yesExtras': true,
-            'extras': ['jquery', 'modernizr', 'analytics'],
-            'analyticsId': 'UA-AAAAAA-A',
-        });
-
-        this.app.options['skip-install'] = true;
-
-        this.app.run({}, function () {
-            // helpers.assertFiles(expected);
             done();
         });
 

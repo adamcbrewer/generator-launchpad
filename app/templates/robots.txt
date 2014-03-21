@@ -2,4 +2,4 @@
 # http://code.google.com/web/controlcrawlindex/
 
 User-agent: *
-<% if (!data.robots) { %>Disallow: /<% } %>
+# Disallow: /

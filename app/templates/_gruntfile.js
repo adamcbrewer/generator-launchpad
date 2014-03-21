@@ -3,10 +3,16 @@ module.exports = function(grunt) {
     // Load the all the plugins that Grunt requires
     require('matchdep').filterDev('grunt-*').forEach(grunt.loadNpmTasks);
 
+
+    /**
+     * Grunt config vars
+     *
+     */
     var config = {};
     config.assetsDir = 'assets/';
     config.cssFilenameOutput = 'styles.css';
     config.jsFilenameOutput = 'main.min.js';
+
 
     grunt.initConfig({
         pkg: grunt.file.readJSON('package.json'),

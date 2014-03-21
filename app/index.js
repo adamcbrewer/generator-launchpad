@@ -36,12 +36,6 @@ LaunchpadGenerator.prototype.askFor = function askFor() {
         },
         {
             type: 'confirm',
-            name: 'robots',
-            message: 'Robots can crawl this project?',
-            default: true
-        },
-        {
-            type: 'confirm',
             name: 'yesExtras',
             message: 'Include third-party libraries?',
             default: true
@@ -209,7 +203,7 @@ LaunchpadGenerator.prototype.projectfiles = function projectfiles() {
 
     // Meta
     this.template('_humans.txt', 'humans.txt');
-    this.template('_robots.txt', 'robots.txt');
+    this.copy('robots.txt', 'robots.txt');
     this.copy('404.html', '404.html');
 
     // Assets - General
