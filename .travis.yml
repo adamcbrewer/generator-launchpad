@@ -6,3 +6,6 @@ before_install:
   - currentfolder=${PWD##*/}
   - if [ "$currentfolder" != 'generator-launchpad' ]; then cd .. && eval "mv $currentfolder generator-launchpad" && cd generator-launchpad; fi
 
+notifications:
+  slack: pencilmonkeys:ovO2cxZwiZaFCvI5bS82QL6w
+
