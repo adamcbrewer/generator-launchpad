@@ -132,7 +132,23 @@ module.exports = function(grunt) {
                     }
                 ]
             }
-        },
+        }<% if (data.modernizr) { %>,
+        modernizr: {
+            dist: {
+                // Look here for the full list of options
+                // https://github.com/Modernizr/grunt-modernizr
+                devFile : 'remote',
+                outputFile : "<%%= config.assetsDir %>js/libs/modernizr.build.js",
+                parseFiles : false,
+                extra : {
+                    load : false,
+                },
+                // Implicitly declare your tests here
+                tests : [
+                    'touch'
+                ]
+            }
+        }<% } %>,
         stylestats: {
             src: ['<%%= config.assetsDir %>css/<%%= config.cssFilenameOutput %>']
         },

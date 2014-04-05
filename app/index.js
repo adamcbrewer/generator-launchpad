@@ -40,28 +40,6 @@ LaunchpadGenerator.prototype.askFor = function askFor() {
             message: 'Include third-party libraries?',
             default: true
         },
-        // CSS
-        {
-            type: 'confirm',
-            name: 'yesSass',
-            message: 'Include SASS?',
-            default: true
-        },
-        {
-            type: 'checkbox',
-            name: 'cssExtras',
-            message: 'reset.css or normalize.css (default)?',
-            when: function (answers) {
-                return answers.yesSass;
-            },
-            choices: [
-                {
-                    name: 'reset instead of normalize?',
-                    value: 'reset',
-                    checked: false
-                }
-            ]
-        },
         // Components & libraries
         {
             type: 'checkbox',
@@ -84,6 +62,28 @@ LaunchpadGenerator.prototype.askFor = function askFor() {
                 {
                     name: 'Google analytics.js?',
                     value: 'analytics',
+                    checked: false
+                }
+            ]
+        },
+        // CSS
+        {
+            type: 'confirm',
+            name: 'yesSass',
+            message: 'Include SASS?',
+            default: true
+        },
+        {
+            type: 'checkbox',
+            name: 'cssExtras',
+            message: 'reset.css or normalize.css (default)?',
+            when: function (answers) {
+                return answers.yesSass;
+            },
+            choices: [
+                {
+                    name: 'reset instead of normalize?',
+                    value: 'reset',
                     checked: false
                 }
             ]
