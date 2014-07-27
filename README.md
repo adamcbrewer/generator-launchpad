@@ -12,9 +12,6 @@ An opinionated, [Yeoman inspired](http://yeoman.io), HTML5 starter kit for quick
         + _jQuery_
         + _Modernizr_
         + _Google Analytics_
-+ _Include SASS?_
-    + _reset.css or normalize.css (default)?_
-        + _reset instead of normalize?_
 + _Your Name?_
 + _Your Twitter username?_
 
@@ -26,11 +23,14 @@ First, install Yeoman and `generator-launchpad`:
 $ npm install -g yo generator-launchpad
 ```
 
-Now, whenever you start a new project just initiate the generator:
+Whenever you start a new project just initiate the generator to create the files and run a few other comands to get started: 
 ```
 $ cd ~/project/dir
 $ yo launchpad
+$ grunt copy // move any third-party libs to where they need to be
+$ grunt css // initial build of styles
 ```
+
 Lastly, be sure you have the latest version of `generator-launchpad`:
 ```
 $ npm update -g generator-launchpad
