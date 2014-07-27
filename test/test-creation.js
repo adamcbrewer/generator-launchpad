@@ -36,14 +36,11 @@ describe('launchpad generator', function () {
             'readme.md',
             'assets/.htaccess',
             'assets/js/script.js',
-            'assets/css/styles.css',
             'assets/img/favicon.ico'
         ];
 
         helpers.mockPrompt(this.app, {
             'appname': 'Mocha Testing',
-
-            'yesSass': false,
 
             'username': 'Your Name',
             'usertitle': 'Web Developer',
@@ -77,8 +74,11 @@ describe('launchpad generator', function () {
         ];
 
         helpers.mockPrompt(this.app, {
-            'yesSass': true,
-            'cssExtras': ['reset']
+            'appname': 'Mocha Testing',
+            'username': 'Your Name',
+            'usertitle': 'Web Developer',
+            'usertwitter': '@youreawesome'
+
         });
 
         this.app.options['skip-install'] = true;

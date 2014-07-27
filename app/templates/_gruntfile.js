@@ -61,7 +61,7 @@ module.exports = function(grunt) {
                 tasks: [
                     'uglify:development'
                 ]
-            }<% if (data.sass) { %>,
+            },
             sass: {
                 files: [
                     '<%%= config.assetsDir %>css/sass/*.scss',
@@ -69,10 +69,11 @@ module.exports = function(grunt) {
                 ],
                 options: { livereload: true },
                 tasks: [
-                    'sass:development'
+                    'sass:development',
+                    'autoprefixer'
                 ]
-            }<% } %>
-        }<% if (data.sass) { %>,
+            }
+        },
         sass: {
             development: {
                 options: {
@@ -94,7 +95,20 @@ module.exports = function(grunt) {
                     '<%%= config.assetsDir %>css/<%%= config.cssFilenameOutput %>': '<%%= config.assetsDir %>css/sass/main.scss'
                 }
             }
-        }<% } %>,
+        },
+        autoprefixer: {
+            options: {
+                browsers: [
+                    'last 2 versions',
+                    'ie 9'
+                ]
+            },
+            single_file: {
+                options: {},
+                src: '<%%= config.assetsDir %>css/<%%= config.cssFilenameOutput %>',
+                dest: '<%%= config.assetsDir %>css/<%%= config.cssFilenameOutput %>'
+            }
+        },
         uglify: {
             development: {
                 options: {
@@ -206,19 +220,24 @@ module.exports = function(grunt) {
         'imagemin:production'
     ]);
 
-    <% if (data.sass) { %>// only process css files
     grunt.registerTask('css', [
-        'sass:development'
-    ]);<% } %>
+        'sass:development',
+        'autoprefixer'
+    ]);
 
     grunt.registerTask('stats', [
         'stylestats'
     ]);
 
+    grunt.registerTask('prefix', [
+        'autoprefixer'
+    ]);
+
     // prep files for production
     grunt.registerTask('build', [
-        <% if (data.sass) { %>'sass:production',
-        <% } %>'uglify:production',
+        'sass:production',
+        'autoprefixer',
+        'uglify:production',
         'imagemin:production',
         'stats',
         'notify:build',
